@@ -1,6 +1,16 @@
 {
-    "hash": "6142393c37f3fbdde314e2378b45328f",
+    "hash": "0b810e37fe77a30fc04ecb0aaf8eee88",
     "packages": [
+        {
+            "package": "Aurielle/phpquery",
+            "version": "dev-master",
+            "source-reference": "f50ac59959b146c8eea55c7ba39b859af5478aa8"
+        },
+        {
+            "package": "kdyby/curl-extension",
+            "version": "dev-master",
+            "source-reference": "db88cb4542f0e87fb7cb81ae0ce548d3d76ed5ac"
+        },
         {
             "package": "nette/nette",
             "version": "v2.0.3"
@@ -16,7 +26,8 @@
 
     ],
     "minimum-stability": "dev",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "kdyby/curl-extension": 20,
+        "aurielle/phpquery": 20
+    }
 }
