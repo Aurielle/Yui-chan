@@ -2,6 +2,14 @@
 	"name": "Aurielle/Yui-chan",
 	"description": "I'm Yui! Glad to be working with you all! I love GDM concerts, and if you will be nice to me, I'll help you download tons of images from your favorite imageboard! See ya!",
 	"version": "1.0.0",
+	"homepage": "http://yui.aurielle.cz",
+	"license": "BSD-3",
+	"authors": [
+		{
+			"name": "Vaclav Vrbka",
+			"homepage": "http://aurielle.cz",
+		}
+	],
 	"require": {
 		"php": ">=5.3.2",
 		"nette/nette": "2.0.*",

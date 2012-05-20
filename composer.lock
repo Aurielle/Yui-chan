@@ -1,0 +1,22 @@
+{
+    "hash": "6142393c37f3fbdde314e2378b45328f",
+    "packages": [
+        {
+            "package": "nette/nette",
+            "version": "v2.0.3"
+        },
+        {
+            "package": "symfony/console",
+            "version": "2.0.x-dev",
+            "source-reference": "v2.0.14"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
