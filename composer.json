@@ -13,7 +13,7 @@
 	"repositories": [
 		{
 			"type": "vcs",
-			"url": "git://github.com/Aurielle/phpquery"
+			"url": "https://github.com/Aurielle/phpquery"
 		}
 	],
 	"require": {

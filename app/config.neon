@@ -7,7 +7,6 @@
 
 common:
 	yui:
-		
 
 
 production < common:
