@@ -103,17 +103,15 @@ class Konachan extends Imageboard
 		
 		// Other pages
 		for ($i = $firstPage + 1; $i <= $lastPage; $i++) {
-		 	
-		 	// New request
-		 	$currentPage = $params['page'] = $i;
-		 	$output->writeln("--- Fetching page #$i ---");
-		 	$html = $this->fetchPage($params);
-		 	$dom = \phpQuery::newDocument($html);
-		 	
-		 	// Download the page
-		 	$this->downloadImages($output, $dom, $dir, $currentPage, $timeout);
-		}	
-
-		
+			
+			// New request
+			$currentPage = $params['page'] = $i;
+			$output->writeln("--- Fetching page #$i ---");
+			$html = $this->fetchPage($params);
+			$dom = \phpQuery::newDocument($html);
+			
+			// Download the page
+			$this->downloadImages($output, $dom, $dir, $currentPage, $timeout);
+		}
 	}
 }

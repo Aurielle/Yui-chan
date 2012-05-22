@@ -25,6 +25,7 @@ class YuiExtension extends Nette\Config\CompilerExtension
 		'commands' => array(
 			'Yui\Commands\Konachan',
 			'Yui\Commands\Yandere',
+			'Yui\Commands\Danbooru',
 		),
 	);
 
