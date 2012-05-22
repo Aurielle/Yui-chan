@@ -15,9 +15,9 @@ Yui is usable only through command line (CLI). To see all available options of Y
 
 ### Downloading from your favorite imageboard
 Run `php yui.php <imageboard>`. Yui will ask you for the tag or tags you want to download, and pages you want to download. Pictures will then be downloaded to directory download/<tag> (relative to Yui directory). Yui-chan supports these imageboards:
-- Konachan.com (command is `konachan`)
-- Yande.re (command is `yandere`)
-- Danbooru (command is `danbooru`)
+- **Konachan.com** (command is *konachan*)
+- **Yande.re** (command is *yandere*)
+- **Danbooru** (command is *danbooru*)
 - more are coming!
 
 You can also specify options:
@@ -40,12 +40,12 @@ Examples:
 - `--timeout` - specifies time to wait (in seconds) when downloading pictures. Defaults to 30 seconds, after this time will the request time out and the picture won't be downloaded.
 
 ### Full usage example
-Downloads pictures with tag `sakura_kyouko` from Danbooru, pages 35 to 93 to directory `/home/aurielle/danbooru`. Timeout option is not present and defaults to 30 seconds.
+Downloads pictures with tag *sakura_kyouko* from Danbooru, pages 35 to 93 to directory */home/aurielle/danbooru*. Timeout option is not present and defaults to 30 seconds.
 ```
 php yui.php danbooru --dir "/home/aurielle/danbooru" -p 35-93 sakura_kyouko
 ```
 
-Downloads all pictures matching search of tags `sakura_kyouko width:>=1920 rating:all` from Konachan, into current Yui directory (-> `<yui dir>/download/sakura_kyouko`). Timeout for requests is 60 seconds.
+Downloads all pictures matching search of tags *sakura_kyouko width:>=1920 rating:all* from Konachan, into current Yui directory (*&lt;yui dir&gt;/download/sakura_kyouko*). Timeout for requests is 60 seconds.
 ```
 php yui.php konachan -a --timeout 60 "sakura_kyouko width:>=1920 rating:all"
 ```
