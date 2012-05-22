@@ -11,6 +11,8 @@ I'm Yui! Glad to be working with you all! I love GDM concerts, and if you will b
 - Run `composer install` in the folder with Yui. This will download dependencies.
 - Yui-chan is ready to work!
 
+If Yui doesn't recognize a command she should be able to recognize, delete contents of the *temp* directory.
+
 ## Usage
 Yui is usable only through command line (CLI). To see all available options of Yui, run `php yui.php`. To see available options of certain command, run `php yui.php help <command>`.
 
