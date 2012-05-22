@@ -87,13 +87,13 @@ abstract class Imageboard extends Command
 		// Page range?
 		if ($pages) {
 			if (is_numeric($pages)) {
-				$pages = (int) $pages;
+				$pages = array((int) $pages);
 			
 			} elseif (Nette\Utils\Strings::match($pages, '#[0-9]+\-[0-9]+#')) {
 				$pages = explode('-', $pages);
-				foreach ($pages as &$page) {
-					$page = (int) $page;
-				}
+				array_walk($pages, function(&$val) {
+					$val = (int) $val;
+				});
 			
 			} else {
 				$output->writeln('<comment>Invalid page format! Aborting.</comment>');
@@ -157,7 +157,18 @@ abstract class Imageboard extends Command
 
 		
 		// Perform the download
-		$this->download($input, $output, $tags, $pages, $all);
+		try {
+			$this->download($input, $output, $tags, $pages, $all);
+		}
+		catch (Nette\Application\AbortException $e) {
+			$output->writeln(PHP_EOL . '<error>Forcing exit:</error> ' . $e->getMessage());
+			return $e->getCode();
+		}
+		catch (\Exception $e) {
+			Nette\Diagnostics\Debugger::log($e, Nette\Diagnostics\Debugger::ERROR);
+			$output->writeln(PHP_EOL . '<error>ERROR:</error> ' . $e->getMessage());
+			return $e->getCode();	
+		}
 
 		// The end message ^^
 		$output->writeln(PHP_EOL . '<info>Yui has finished! ^_^</info>');
@@ -254,6 +265,18 @@ abstract class Imageboard extends Command
 
 
 	/**
+	 * Factory for new cURL requests.
+	 * @param string $url
+	 * @return Kdyby\Extension\Curl\Request
+	 */
+	protected function newCurlRequest($url)
+	{
+		return new Kdyby\Extension\Curl\Request($url);
+	}
+
+
+
+	/**
 	 * Fetches imageboard page through cURL. GET parameters are passed through an array.
 	 * @param array $params
 	 * @return string
@@ -261,7 +284,7 @@ abstract class Imageboard extends Command
 	 */
 	protected function fetchPage(array $params)
 	{
-		$request = new Kdyby\Extension\Curl\Request(static::BOARD_POST_URL);
+		$request = $this->newCurlRequest(static::BOARD_POST_URL);
 		$response = $request->get($params);
 		return $response->getResponse();
 	}
@@ -319,12 +342,11 @@ abstract class Imageboard extends Command
 			$output->writeln("Downloading image #$counter from page $currentPage.");
 
 			$url = pq($item, $dom)->find('a.directlink')->attr('href');
-			$tmp = explode('/', substr($url, 7));
-			$filename = $tmp[2] . '.' . substr($url, -3, 3);
+			$filename = $this->getImageLocalName($url);
 			
 			try {
 				$fh = fopen('safe://' . $dir . '/' . $filename, 'wb');
-				$ch = new Kdyby\Extension\Curl\Request($url);
+				$ch = $this->newCurlRequest($url);
 				$ch->setTimeout($timeout);
 				$res = $ch->send();
 				fwrite($fh, $res->getResponse());
@@ -332,9 +354,24 @@ abstract class Imageboard extends Command
 			
 			} catch(\Exception $e) {
 				$output->writeln("Downloading image #$counter (page $currentPage) failed. Error: " . $e->getMessage());
-				Nette\Diagnostics\Debugger::log($e, Nette\Nette\Diagnostics\Debugger::ERROR);
+				Nette\Diagnostics\Debugger::log($e, Nette\Diagnostics\Debugger::ERROR);
 			}
 		}
+	}
+
+
+
+	/**
+	 * Returns local filename for given image.
+	 * @param string $url
+	 * @return string
+	 */
+	protected function getImageLocalName($url)
+	{
+		$tmp = explode('/', substr($url, 7)); // http://
+		$filename = $tmp[2] . '.' . substr($url, -3, 3);
+
+		return $filename;
 	}
 
 

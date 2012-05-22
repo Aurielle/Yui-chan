@@ -72,6 +72,10 @@ class Konachan extends Imageboard
 		$html = $this->fetchPage($params);
 		$dom = \phpQuery::newDocument($html);
 
+		if (pq('.content p:contains("Nobody here but us chickens!")')->text() === 'Nobody here but us chickens!') {
+			throw new Nette\Application\AbortException("Your search query matched no results.", 1);
+		}
+
 		// Number of images and pages
 		$itemCount = $this->getItemCount($dom, $tag);
 		$pageCount = $this->getPageCount($dom);

@@ -1,5 +1,5 @@
 {
-    "hash": "9d6c28ccddaf1e5e6605fb8f7f16bf6c",
+    "hash": "6637d53cd50bceb8bb09ee7743d60012",
     "packages": [
         {
             "package": "Aurielle/phpquery",
@@ -9,7 +9,7 @@
         {
             "package": "kdyby/curl-extension",
             "version": "dev-master",
-            "source-reference": "db88cb4542f0e87fb7cb81ae0ce548d3d76ed5ac"
+            "source-reference": "0de5b906e3821d326ef80a3be86e3f57edc45ad2"
         },
         {
             "package": "nette/nette",
