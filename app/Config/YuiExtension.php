@@ -26,6 +26,7 @@ class YuiExtension extends Nette\Config\CompilerExtension
 			'Yui\Commands\Konachan',
 			'Yui\Commands\Yandere',
 			'Yui\Commands\Danbooru',
+			'Yui\Commands\Pixiv',
 		),
 	);
 

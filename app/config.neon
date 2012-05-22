@@ -8,6 +8,10 @@
 common:
 	yui:
 
+	php:
+		default_charset: utf-8
+		mbstring.internal_encoding: UTF-8
+
 
 production < common:
 

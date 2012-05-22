@@ -7,6 +7,7 @@ I'm Yui! Glad to be working with you all! I love GDM concerts, and if you will b
 - Get and install PHP 5.3.2 or greater and perform necessary setup for command-line usage.
 - Get and install [Composer](http://getcomposer.org/doc/01-basic-usage.md#installation).
 - Download Yui-chan!
+- Create temp, log and download folders and make them readable and writeable for PHP. If you're not sure, chmod them to 777.
 - Run `composer install` in the folder with Yui. This will download dependencies.
 - Yui-chan is ready to work!
 
@@ -18,7 +19,10 @@ Run `php yui.php <imageboard>`. Yui will ask you for the tag or tags you want to
 - **Konachan.com** (command is *konachan*)
 - **Yande.re** (command is *yandere*)
 - **Danbooru** (command is *danbooru*)
+- **Pixiv.net** (command is *pixiv*)
 - more are coming!
+
+**Important note:** Downloading from Pixiv.net is little tricky. If you run Yui under Windows or Linux with no UTF-8 support in terminal, you must encode any non-ASCII tags you enter with [this tool](http://yui.aurielle.cz). Otherwise you'll get a bunch of question marks instead of your tag in kanji. You must also specify destination directory with `--dir` option, because Yui can't create folders with kanji names.
 
 You can also specify options:
 `php yui.php <imageboard> [-p|--page x-y] [-a|--all] [-d|--dir <local dir>] [--timeout X] tag1 [tag2] ... [tagN]`
