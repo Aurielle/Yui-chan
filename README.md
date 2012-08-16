@@ -3,6 +3,9 @@ I'm Yui! Glad to be working with you all! I love GDM concerts, and if you will b
 
 ![Yui-chan](http://yui.aurielle.cz/images/yui.png)
 
+## Important
+This is only a partial guide and may be outdated this very moment. Visit [Yui's website](http://yui.aurielle.cz) to access the most up-to-date information!
+
 ## Setup
 - Get and install PHP 5.3.2 or greater and perform necessary setup for command-line usage.
 - Get and install [Composer](http://getcomposer.org/doc/01-basic-usage.md#installation).
